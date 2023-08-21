@@ -1,4 +1,13 @@
 :root {
+  --background-clr: #f7f7f7;
+  --primary-text-clr: #01172f;
+  --secondary-text-clr: #ffffff;
+  --accent-clr: #d52941;
+
+  --borders-clr: #cacaca;
+}
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -89,4 +98,4 @@ body {
   html {
     color-scheme: dark;
   }
-}
+} */
