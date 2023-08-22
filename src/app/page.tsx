@@ -1,27 +1,23 @@
-import Image from "next/image";
 import styles from "./page.module.css";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/db";
 
-// It's based on pages router, I'm using App router, go to nextJS docs to App router fetching
-const prisma = new PrismaClient();
-
-export async function getServerSideProps() {
-  const users = await prisma.user.findMany();
-  return {
-    props: {
-      initialUsers: users,
-    },
-  };
+async function getUsers() {
+  return prisma.user.findMany();
 }
 
-export default function Home({ initialUsers }: any) {
-  console.log(initialUsers);
+export default async function Home() {
+  const users = await getUsers();
+
   return (
     <section>
       <header>
         <h1>Home page content</h1>
         <h2>Users</h2>
-        {initialUsers}
+        <ul>
+          {users.map((user) => (
+            <li>{(user.firstName, user.lastName)}</li>
+          ))}
+        </ul>
       </header>
     </section>
   );
