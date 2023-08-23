@@ -2,17 +2,21 @@ import styles from "./page.module.css";
 
 export default function Page() {
   return (
-    <div className="">
-      <header>Registration form</header>
+    <div className={styles.registerContainer}>
+      <header>
+        <h1>Registration form</h1>
+      </header>
       <form className={styles.registerForm}>
-        <input type="text" name="firstName" id="firstName" />
         <label htmlFor="firstName">First Name</label>
-        <input type="text" name="lastName" id="lastName" />
+        <input type="text" name="firstName" id="firstName" />
         <label htmlFor="lastName">Last Name</label>
-        <select>
+        <input type="text" name="lastName" id="lastName" />
+        <label htmlFor="gender">Gender</label>
+        <select name="gender" id="gender">
           <option>male</option>
           <option>female</option>
         </select>
+        <input />
       </form>
     </div>
     // id        String @id @default(cuid())

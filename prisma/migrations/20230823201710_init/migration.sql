@@ -4,5 +4,6 @@ CREATE TABLE "User" (
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
     "gender" TEXT NOT NULL,
-    "age" INTEGER NOT NULL
+    "age" INTEGER NOT NULL,
+    "photo" TEXT NOT NULL
 );

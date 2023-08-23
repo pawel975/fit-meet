@@ -4,3 +4,9 @@
   align-items: flex-start;
   gap: 0.5rem;
 }
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
