@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 import { prisma } from "@/db";
 
@@ -7,6 +8,9 @@ async function getUsers() {
 
 export default async function Home() {
   const users = await getUsers();
+
+  // TODO: Redirect use if session is not active
+  redirect("/register");
 
   return (
     <section>
