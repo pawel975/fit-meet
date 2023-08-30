@@ -14,10 +14,10 @@ async function loginUser(data: FormData) {
     where: { login: loginData.login, password: loginData.password },
   });
 
-  if (res.length === 0) {
-    redirect("/error");
+  if (res.length !== 0) {
+    redirect("/user-profile");
   } else {
-    redirect("/");
+    redirect("/not-found");
   }
 }
 

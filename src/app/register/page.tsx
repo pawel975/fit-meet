@@ -52,7 +52,7 @@ export default function Page() {
         <input type="text" name="lastName" id="lastName" />
         <label htmlFor="gender">Gender</label>
         <select name="gender" id="gender">
-          <option value="i-dont-want-to-answer">I don't want to answer</option>
+          <option value="i-dont-want-to-answer">I don`t want to answer</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
