@@ -1,3 +1,5 @@
+import Dashboard from "../components/Dashboard";
+
 export default function Page() {
-  return <h1>User profile page</h1>;
+  return <Dashboard />;
 }

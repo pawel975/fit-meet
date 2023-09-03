@@ -1,9 +1,13 @@
-import NextAuth from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
   providers: [
     CredentialsProvider({
       type: "credentials",
@@ -42,6 +46,32 @@ export const authOptions = {
       },
     }),
   ],
-};
+  callbacks: {
+    jwt: async ({ token, user }: { token: any; user: any }) => {
+      if (user) {
+        token.email = user.data.auth.email;
+        token.username = user.data.auth.userName;
+        token.user_type = user.data.auth.userType;
+        token.accessToken = user.data.auth.token;
+      }
 
-export default NextAuth(authOptions);
+      return token;
+    },
+    session: ({
+      session,
+      token,
+      user,
+    }: {
+      session: any;
+      token: any;
+      user: any;
+    }) => {
+      if (token) {
+        session.user.email = token.email;
+        session.user.username = token.userName;
+        session.user.accessToken = token.accessToken;
+      }
+      return session;
+    },
+  },
+};

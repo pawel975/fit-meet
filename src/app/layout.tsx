@@ -3,6 +3,7 @@ import styles from "./layout.module.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import NextAuthProvider from "./context/NextAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,17 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className={styles.nav}>
-          <ul className={styles.navOptions}>
-            <Link className={styles.navLink} href="/">
-              Home
-            </Link>
-            <Link className={styles.navLink} href="/user-profile">
-              Profile
-            </Link>
-          </ul>
-        </nav>
-        <section>{children}</section>
+        <NextAuthProvider>
+          <nav className={styles.nav}>
+            <ul className={styles.navOptions}>
+              <Link className={styles.navLink} href="/">
+                Home
+              </Link>
+              <Link className={styles.navLink} href="/user-profile">
+                Profile
+              </Link>
+            </ul>
+          </nav>
+          <section>{children}</section>
+        </NextAuthProvider>
       </body>
     </html>
   );
